@@ -12,9 +12,7 @@ const noteInput = document.getElementById("noteInput");
 const addNoteBtn = document.getElementById("addNoteBtn");
 const notesList = document.getElementById("notesList");
 
-// ---- AUTH LOGIC ----
-
-// Login
+// LOGIN
 loginBtn.addEventListener("click", async () => {
   const email = emailInput.value;
   const password = passwordInput.value;
@@ -26,7 +24,7 @@ loginBtn.addEventListener("click", async () => {
   }
 });
 
-// Signup
+// SIGNUP
 signupBtn.addEventListener("click", async () => {
   const email = emailInput.value;
   const password = passwordInput.value;
@@ -39,12 +37,12 @@ signupBtn.addEventListener("click", async () => {
   }
 });
 
-// Logout
+// LOGOUT
 logoutBtn.addEventListener("click", () => {
   auth.signOut();
 });
 
-// Listen for auth changes
+// AUTH STATE LISTENER
 auth.onAuthStateChanged(user => {
   if (user) {
     authSection.classList.add("hidden");
@@ -57,15 +55,12 @@ auth.onAuthStateChanged(user => {
   }
 });
 
-
-// ---- NOTES LOGIC ----
-
-// Add a new note
+// ADD NOTE
 addNoteBtn.addEventListener("click", async () => {
   const user = auth.currentUser;
   const text = noteInput.value.trim();
 
-  if (!text) return;
+  if (!user || !text) return;
 
   await db.collection("notes").add({
     uid: user.uid,
@@ -77,7 +72,7 @@ addNoteBtn.addEventListener("click", async () => {
   loadNotes(user.uid);
 });
 
-// Load notes
+// LOAD NOTES
 async function loadNotes(uid) {
   const snapshot = await db.collection("notes")
     .where("uid", "==", uid)
@@ -96,8 +91,8 @@ async function loadNotes(uid) {
       <button class="deleteBtn">X</button>
     `;
 
-    div.querySelector(".deleteBtn").addEventListener("click", () => {
-      db.collection("notes").doc(doc.id).delete();
+    div.querySelector(".deleteBtn").addEventListener("click", async () => {
+      await db.collection("notes").doc(doc.id).delete();
       loadNotes(uid);
     });
 
