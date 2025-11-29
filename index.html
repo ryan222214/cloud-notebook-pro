@@ -7,18 +7,36 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Cloud Notebook Pro</h1>
-  <p>If you see this text on your GitHub Pages URL, the project is wired up.</p>
 
-  <!-- Firebase SDKs: core + auth + firestore -->
+  <div id="auth-section" class="container">
+    <h2>Sign In</h2>
+
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+
+    <button id="loginBtn">Log In</button>
+    <button id="signupBtn" class="secondary">Create Account</button>
+  </div>
+
+  <div id="app-section" class="container hidden">
+    <h2>Your Cloud Notebook</h2>
+
+    <textarea id="noteInput" placeholder="Write a note..."></textarea>
+    <button id="addNoteBtn">Add Note</button>
+    <button id="logoutBtn" class="secondary">Log Out</button>
+
+    <h3>Saved Notes</h3>
+    <div id="notesList"></div>
+  </div>
+
+  <!-- Firebase SDKs -->
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-  <!-- Your Firebase init file -->
+  <!-- Your scripts -->
   <script src="firebase.js"></script>
-
-  <!-- Your app logic -->
   <script src="app.js"></script>
+
 </body>
 </html>
