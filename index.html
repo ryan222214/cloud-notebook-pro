@@ -5,28 +5,69 @@
   <title>Cloud Notebook Pro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-  <div id="auth-section" class="container">
-    <h2>Sign In</h2>
+  <div class="app-shell">
+    <header class="app-header">
+      <h1>Cloud Notebook Pro</h1>
+      <p class="tagline">A simple online notebook that follows you to any device.</p>
+    </header>
 
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
+    <main class="app-main">
+      <section id="auth-section" class="panel">
+        <h2>Sign In</h2>
 
-    <button id="loginBtn">Log In</button>
-    <button id="signupBtn" class="secondary">Create Account</button>
-  </div>
+        <label class="field">
+          <span>Email</span>
+          <input type="email" id="email" placeholder="you@example.com" />
+        </label>
 
-  <div id="app-section" class="container hidden">
-    <h2>Your Cloud Notebook</h2>
+        <label class="field">
+          <span>Password</span>
+          <input type="password" id="password" placeholder="At least 6 characters" />
+        </label>
 
-    <textarea id="noteInput" placeholder="Write a note..."></textarea>
-    <button id="addNoteBtn">Add Note</button>
-    <button id="logoutBtn" class="secondary">Log Out</button>
+        <button id="loginBtn" class="btn primary">Log In</button>
+        <button id="signupBtn" class="btn ghost">Create Account</button>
 
-    <h3>Saved Notes</h3>
-    <div id="notesList"></div>
+        <p class="hint">
+          Accounts are stored securely with Firebase Authentication.
+        </p>
+      </section>
+
+      <section id="app-section" class="panel hidden">
+        <h2>Your Cloud Notebook</h2>
+
+        <label class="field">
+          <span>Write a note</span>
+          <textarea id="noteInput" placeholder="Capture an idea, reminder, or thought..."></textarea>
+        </label>
+
+        <button id="addNoteBtn" class="btn primary full">Add Note</button>
+        <button id="logoutBtn" class="btn ghost full">Log Out</button>
+
+        <div class="notes-header">
+          <h3>Saved Notes</h3>
+          <span class="notes-subtitle">Newest notes appear at the top.</span>
+        </div>
+
+        <div id="notesList" class="notes-list">
+          <!-- Notes will be rendered here -->
+        </div>
+
+        <p class="empty-hint" id="emptyHint">
+          No notes yet. Write something above and tap “Add Note”.
+        </p>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Built with GitHub Pages and Firebase.</span>
+    </footer>
   </div>
 
   <!-- Firebase SDKs -->
@@ -34,9 +75,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
-  <!-- Your scripts -->
-  <script src="firebase.js"></script>
+  <!-- App logic (includes Firebase config) -->
   <script src="app.js"></script>
-
 </body>
 </html>
