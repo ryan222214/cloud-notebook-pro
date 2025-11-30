@@ -56,7 +56,7 @@
 
         <div class="tabs-row">
           <button class="tab active" data-tab="notesTab">Notes</button>
-          <button class="tab disabled" data-tab="tasksTab">Tasks (coming soon)</button>
+          <button class="tab" data-tab="tasksTab">Tasks</button>
         </div>
 
         <!-- Notes tab -->
@@ -96,7 +96,7 @@
           <div class="notes-header">
             <h3>Saved Notes</h3>
             <span class="notes-subtitle">
-              Newest notes at the top. Click a note to edit it.
+              Newest notes at the top. Drag to reorder or click a note to edit it.
             </span>
           </div>
 
@@ -107,10 +107,31 @@
           </p>
         </section>
 
-        <!-- Tasks tab stub -->
+        <!-- Tasks tab -->
         <section id="tasksTab" class="tab-panel">
-          <p class="muted">
-            Task view will live here in a later version of this dashboard.
+          <div class="tasks-controls">
+            <label class="field">
+              <span>Add task</span>
+              <input
+                id="taskInput"
+                type="text"
+                placeholder="What do you need to do?"
+              />
+            </label>
+            <button id="addTaskBtn" class="btn primary full">Add Task</button>
+          </div>
+
+          <div class="notes-header">
+            <h3>Tasks</h3>
+            <span class="notes-subtitle">
+              Click the circle to mark a task as done.
+            </span>
+          </div>
+
+          <div id="tasksList" class="tasks-list"></div>
+
+          <p class="empty-hint" id="tasksEmptyHint">
+            No tasks yet. Add your first one above.
           </p>
         </section>
       </section>
