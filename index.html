@@ -66,17 +66,14 @@
               id="searchInput"
               type="text"
               class="search-input"
-              placeholder="Search your notes..."
+              placeholder="Search inside this folder..."
             />
 
-            <div class="category-row">
-              <label class="field small">
-                <span>Filter</span>
-                <select id="categoryFilter"></select>
-              </label>
+            <div class="folder-row">
+              <div id="categoryFolders" class="folder-list"></div>
 
               <label class="field small">
-                <span>New note category</span>
+                <span>Save new note in</span>
                 <select id="categorySelect"></select>
               </label>
             </div>
@@ -96,14 +93,14 @@
           <div class="notes-header">
             <h3>Saved Notes</h3>
             <span class="notes-subtitle">
-              Newest notes at the top. Drag to reorder or click a note to edit it.
+              One folder at a time. Drag to reorder or click a note to edit.
             </span>
           </div>
 
           <div id="notesList" class="notes-list"></div>
 
           <p class="empty-hint" id="emptyHint">
-            No notes yet. Write something above and tap "Add Note".
+            Pick a folder above, then add your first note.
           </p>
         </section>
 
@@ -118,20 +115,38 @@
                 placeholder="What do you need to do?"
               />
             </label>
+
+            <div class="category-row">
+              <label class="field small">
+                <span>When</span>
+                <select id="taskBucketSelect">
+                  <option value="today">Today</option>
+                  <option value="week">This Week</option>
+                  <option value="someday">Someday</option>
+                </select>
+              </label>
+            </div>
+
             <button id="addTaskBtn" class="btn primary full">Add Task</button>
+          </div>
+
+          <div class="task-subtabs">
+            <button class="task-tab active" data-bucket="today">Today</button>
+            <button class="task-tab" data-bucket="week">This Week</button>
+            <button class="task-tab" data-bucket="someday">Someday</button>
           </div>
 
           <div class="notes-header">
             <h3>Tasks</h3>
             <span class="notes-subtitle">
-              Click the circle to mark a task as done.
+              Drag to prioritize. Tap the circle to mark done.
             </span>
           </div>
 
           <div id="tasksList" class="tasks-list"></div>
 
           <p class="empty-hint" id="tasksEmptyHint">
-            No tasks yet. Add your first one above.
+            No tasks in this bucket yet. Add your first one above.
           </p>
         </section>
       </section>
