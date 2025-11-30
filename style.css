@@ -297,11 +297,6 @@ body.theme-light .btn.ghost:hover {
   transform: translateY(-1px);
 }
 
-.tab.disabled {
-  opacity: 0.45;
-  cursor: default;
-}
-
 .tab-panel {
   display: none;
 }
@@ -416,6 +411,17 @@ body.theme-light .note {
   color: var(--muted);
 }
 
+/* Drag and drop visual states */
+
+.note.dragging {
+  opacity: 0.6;
+  transform: scale(0.995);
+}
+
+.note.drag-over {
+  outline: 1px dashed rgba(56, 189, 248, 0.8);
+}
+
 /* Delete button */
 
 .deleteBtn {
@@ -437,6 +443,74 @@ body.theme-light .note {
   background: var(--danger-soft);
   transform: translateY(-1px);
   box-shadow: 0 8px 16px rgba(248, 113, 113, 0.45);
+}
+
+/* Tasks */
+
+.tasks-controls {
+  margin-bottom: 10px;
+}
+
+.tasks-list {
+  margin-top: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #020617;
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  border: 1px solid rgba(30, 64, 175, 0.5);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.7);
+}
+
+body.theme-light .task {
+  background: #ffffff;
+  border-color: #cbd5f5;
+  box-shadow: 0 10px 24px rgba(148, 163, 184, 0.4);
+}
+
+.task-toggle {
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  border: 2px solid var(--accent-soft);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: var(--accent-soft);
+  transition: background-color 0.12s ease, color 0.12s ease, transform 0.12s ease;
+}
+
+.task-toggle.done {
+  background: var(--accent-soft);
+  color: #0f172a;
+  transform: scale(1.03);
+}
+
+.task-text {
+  flex: 1;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.task-text.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.task-delete {
+  margin-top: 0;
 }
 
 /* Footer */
