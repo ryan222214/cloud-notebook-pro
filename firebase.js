@@ -1,3 +1,6 @@
+// Firebase v8 setup for Cloud Notebook Pro
+
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAc61u9eQg7gVakbhbQq-yI14bY9ECHsOw",
   authDomain: "cloud-notebook-pro.firebaseapp.com",
@@ -6,3 +9,10 @@ const firebaseConfig = {
   messagingSenderId: "530994617086",
   appId: "1:530994617086:web:c270ae41c2a802506823af"
 };
+
+// Initialize Firebase (v8 style, using the global `firebase` from the script tags)
+firebase.initializeApp(firebaseConfig);
+
+// Expose Firestore and Auth for app.js
+const db = firebase.firestore();
+const auth = firebase.auth();
