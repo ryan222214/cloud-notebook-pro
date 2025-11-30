@@ -1,82 +1,289 @@
+:root {
+  --bg: #020617;
+  --bg-elevated: #020817;
+  --panel: #0b1220;
+  --panel-soft: #111827;
+  --accent: #38bdf8;
+  --accent-soft: #0ea5e9;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --border: #1f2937;
+  --danger: #ef4444;
+  --danger-soft: #b91c1c;
+  --shadow-soft: 0 24px 60px rgba(15, 23, 42, 0.75);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
-  font-family: system-ui, sans-serif;
-  background: #020617;
-  color: #e5e7eb;
+  height: 100%;
+}
+
+body {
   margin: 0;
-  padding: 20px;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
+  color: var(--text);
 }
 
-.container {
-  background: #0f172a;
-  padding: 20px;
-  margin: 0 auto;
-  max-width: 500px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+/* Shell layout */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 16px;
 }
 
-.hidden {
-  display: none;
+.app-header {
+  text-align: center;
+  margin-bottom: 24px;
 }
 
-h2, h3 {
-  margin-top: 0;
-  color: #38bdf8;
+.app-header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  letter-spacing: 0.03em;
 }
 
-input, textarea {
+.tagline {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.app-main {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  background: #1e293b;
-  color: white;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-button {
+/* Panels */
+
+.panel {
+  background: linear-gradient(145deg, var(--panel), var(--panel-soft));
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.panel h2 {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+/* Fields */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field span {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--muted);
+}
+
+input,
+textarea {
   width: 100%;
-  padding: 12px;
-  background: #38bdf8;
+  padding: 12px 12px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #020617;
+  color: var(--text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--accent-soft);
+  box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.3);
+  background: #020817;
+}
+
+textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Buttons */
+
+.btn {
   border: none;
-  border-radius: 8px;
-  color: #0f172a;
-  font-weight: bold;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
-  margin-top: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background-color 0.12s ease, color 0.12s ease, opacity 0.12s ease;
+  margin-top: 6px;
 }
 
-button.secondary {
-  background: #475569;
-  color: white;
+.btn.full {
+  width: 100%;
 }
+
+.btn.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  color: #0f172a;
+  box-shadow: 0 12px 28px rgba(56, 189, 248, 0.4);
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 32px rgba(56, 189, 248, 0.6);
+}
+
+.btn.primary:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(56, 189, 248, 0.3);
+}
+
+.btn.ghost {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--muted);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.btn.ghost:hover {
+  background: rgba(31, 41, 55, 0.95);
+  color: var(--text);
+}
+
+/* Helper text */
+
+.hint {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* Notes section */
+
+.notes-header {
+  display: flex;
+  flex-direction: column;
+  margin-top: 18px;
+  margin-bottom: 6px;
+}
+
+.notes-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.notes-subtitle {
+  font-size: 0.78rem;
+  color: var(--muted);
+}
+
+.notes-list {
+  margin-top: 6px;
+  max-height: 260px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.empty-hint {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+/* Individual note card */
 
 .note {
-  background: #1e293b;
+  background: #020617;
   padding: 10px 12px;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-top: 10px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
+  border: 1px solid rgba(30, 64, 175, 0.5);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.7);
 }
 
 .note p {
   margin: 0;
   flex: 1;
+  font-size: 0.92rem;
   word-break: break-word;
 }
 
+/* Delete button on notes */
+
 .deleteBtn {
-  width: auto;              /* override the global button width */
-  background: #ef4444;
+  width: auto;
+  background: var(--danger);
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 999px;
   padding: 4px 10px;
   cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
   flex-shrink: 0;
+  transition: background-color 0.12s ease, transform 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+.deleteBtn:hover {
+  background: var(--danger-soft);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 16px rgba(248, 113, 113, 0.45);
+}
+
+/* Footer */
+
+.app-footer {
+  margin-top: 22px;
+  font-size: 0.78rem;
+  color: var(--muted);
+  text-align: center;
+  opacity: 0.85;
+}
+
+/* Utility */
+
+.hidden {
+  display: none;
+}
+
+/* Small screens */
+
+@media (max-width: 600px) {
+  .panel {
+    padding: 18px 16px 16px;
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
 }
