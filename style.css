@@ -54,20 +54,29 @@ button.secondary {
 
 .note {
   background: #1e293b;
-  padding: 12px;
+  padding: 10px 12px;
   border-radius: 8px;
   margin-top: 10px;
-  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.note p {
+  margin: 0;
+  flex: 1;
+  word-break: break-word;
 }
 
 .deleteBtn {
-  position: absolute;
-  right: 12px;
-  top: 12px;
+  width: auto;              /* override the global button width */
   background: #ef4444;
   color: white;
   border: none;
   border-radius: 4px;
-  padding: 4px 8px;
+  padding: 4px 10px;
   cursor: pointer;
+  flex-shrink: 0;
 }
